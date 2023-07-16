@@ -42,7 +42,24 @@ colorscheme gruvbox
 set background=dark
 
 " 命令行模式
-set wildmode=list:longest
+set wildmenu
+set wildmode=longest,full
+
+" 空白字符
+set list
+set listchars=eol:$,tab:>-,trail:X
+
+" netrw
+let g:netrw_banner=0 " 禁用没用的横幅
+" let g:netrw_winsize=25 " 初始窗口大小为25%
+" let g:netrw_liststyle=3 " 使用树状模式
+" let g:netrw_altv=1 " 分割窗口时默认在右边
+" let g:netrw_browse_split=4 " enter时在上一个窗口打开
+
+" execute project related configuration in current directory
+if filereadable(".vim.workspace")
+	source .vim.workspace
+endif
 
 """""""""""""""""""""""""""""""
 " Change cursor shape in different modes
@@ -76,6 +93,6 @@ inoremap <c-[> <nop>
 " 插件
 """"""""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
-Plug 'godlygeek/tabular'
-Plug 'preservim/vim-markdown'
+" Plug 'godlygeek/tabular'
+" Plug 'preservim/vim-markdown'
 call plug#end()
